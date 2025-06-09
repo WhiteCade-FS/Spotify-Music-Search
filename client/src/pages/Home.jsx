@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import DarkModeToggle from '../components/DarkModeToggle.jsx';
+import { searchSpotify } from '../../services/api.js';
 
 const Home = () => {
   const [token, setToken] = useState('');
@@ -23,7 +24,7 @@ const Home = () => {
       const response = await fetch(`http://localhost:3001/search?q=${encodeURIComponent(searchTerm)}&type=${searchType}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
-      const data = await response.json();
+      const data = await searchSpotify(searchTerm, searchType, token);
       setResults(data[`${searchType}s`]?.items || []);
     } catch (err) {
       console.error(err);
