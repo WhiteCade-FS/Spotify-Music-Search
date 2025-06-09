@@ -10,6 +10,20 @@ const client_secret = process.env.SPOTIFY_CLIENT_SECRET;
 const redirect_uri = process.env.SPOTIFY_REDIRECT_URI;
 const jwt_secret = process.env.JWT_SECRET;
 
+router.get('/login', (req, res) => {
+  const scope = 'user-read-private user-read-email';
+
+  const queryParams = querystring.stringify({
+    response_type: 'code',
+    client_id,
+    scope,
+    redirect_uri,
+  });
+
+  res.redirect(`https://accounts.spotify.com/authorize?${queryParams}`);
+});
+
+
 router.get('/callback', async (req, res) => {
   const code = req.query.code || null;
 
@@ -45,3 +59,4 @@ router.get('/callback', async (req, res) => {
   }
 });
 
+module.exports = router;
