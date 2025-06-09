@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react';
 import DarkModeToggle from '../components/DarkModeToggle.jsx';
 import { searchSpotify } from '../../services/api.js';
 
-const Home = () => {
-  const [token, setToken] = useState('');
+const Home = ({ token }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [searchType, setSearchType] = useState('track');
   const [results, setResults] = useState([]);
