@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import DarkModeToggle from '../components/DarkModeToggle.jsx';
 import { searchSpotify } from '../../services/api.js';
-import { useNavigate } from 'react-router-dom';
-
 
 const Home = ({ token }) => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -10,6 +9,13 @@ const Home = ({ token }) => {
   const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const storedToken = localStorage.getItem('jwt');
+    if (!storedToken) {
+      navigate('/login');
+    }
+  }, [navigate]);
 
   const handleSearch = async () => {
     if (!searchTerm.trim() || !token) return;
