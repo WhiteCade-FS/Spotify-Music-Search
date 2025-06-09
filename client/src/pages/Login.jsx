@@ -8,7 +8,7 @@ const Login = () => {
         <p className="mb-6 text-gray-300">Search for tracks, albums, and artists — instantly.</p>
 
         <a
-          href="http://127.0.0.1:3001/auth/login"
+          href="https://your-heroku-app.herokuapp.com/auth/login"
           className="inline-block bg-green-500 hover:bg-green-400 text-black font-semibold text-lg px-6 py-3 rounded-lg transition-all transform hover:scale-105"
         >
           Login with Spotify
