@@ -16,7 +16,6 @@ const App = () => {
     if (urlToken) {
       localStorage.setItem('jwt', urlToken);
       setToken(urlToken);
-      console.log('✅ Token saved to localStorage');
       window.history.replaceState({}, '', '/');
     } else if (storedToken) {
       setToken(storedToken);

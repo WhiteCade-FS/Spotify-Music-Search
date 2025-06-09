@@ -20,8 +20,6 @@ router.get('/login', (req, res) => {
     redirect_uri,
   });
   
-    console.log("🔐 redirect_uri used in /auth/login:", redirect_uri);
-  
 
   res.redirect(`https://accounts.spotify.com/authorize?${queryParams}`);
 });
@@ -29,8 +27,6 @@ router.get('/login', (req, res) => {
 
 router.get('/callback', async (req, res) => {
   const code = req.query.code || null;
-
-  console.log("🔁 Received code:", code);
 
   try {
     const response = await axios.post(
@@ -53,11 +49,10 @@ router.get('/callback', async (req, res) => {
 
     const token = jwt.sign({ access_token, refresh_token }, jwt_secret, { expiresIn: '1h' });
 
-    console.log("✅ Token created, redirecting with:", token);
 
     res.redirect(`https://spotify-music-search-six.vercel.app/?token=${token}`);
   } catch (err) {
-    console.error("❌ Spotify auth failed:", err.response?.data || err.message);
+    console.error(err.response?.data || err.message);
     res.status(400).json({ error: 'Spotify auth failed' });
   }
 });
