@@ -19,6 +19,9 @@ router.get('/login', (req, res) => {
     scope,
     redirect_uri,
   });
+  
+    console.log("🔐 redirect_uri used in /auth/login:", redirect_uri);
+  
 
   res.redirect(`https://accounts.spotify.com/authorize?${queryParams}`);
 });
