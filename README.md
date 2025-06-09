@@ -30,5 +30,5 @@
 - Local Backend: <a>http://127.0.0.1:3001/auth/login</a>
 - Local Frontend: <a>http://127.0.0.1:5173/</a>
 - Heroku Site: <a>https://spotify-music-search-d229755e687e.herokuapp.com/auth/login</a>
-- Vercel Live Site: <a>spotify-music-search-six.vercel.app</a>
+- Vercel Live Site: [Open App](spotify-music-search-six.vercel.app)
 - Spotify API Docs: <a>https://developer.spotify.com/documentation/web-api</a>
