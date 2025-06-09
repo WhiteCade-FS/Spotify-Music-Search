@@ -8,13 +8,6 @@ const Home = ({ token }) => {
   const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    const stored = localStorage.getItem('jwt');
-    if (stored) {
-      setToken(stored);
-    }
-  }, []);
-
   const handleSearch = async () => {
     if (!searchTerm.trim() || !token) return;
 
