@@ -13,10 +13,6 @@ const App = () => {
     const urlToken = urlParams.get('token');
     const storedToken = localStorage.getItem('jwt');
 
-    console.log('🔍 location.search:', location.search);
-    console.log('🔑 URL token:', urlToken);
-    console.log('📦 Stored token:', storedToken);
-
     if (urlToken) {
       localStorage.setItem('jwt', urlToken);
       setToken(urlToken);

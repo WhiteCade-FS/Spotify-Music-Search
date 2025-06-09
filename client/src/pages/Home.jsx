@@ -39,7 +39,7 @@ const Home = ({ token }) => {
 
   const handleLogout = () => {
     localStorage.removeItem('jwt');
-    navigate('/login');
+    window.location.reload();
   };
 
   return (
