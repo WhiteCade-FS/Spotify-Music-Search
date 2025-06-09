@@ -43,7 +43,6 @@ const Home = () => {
   return (
     <div className="min-h-screen bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 px-6 py-10">
       <div className="max-w-4xl mx-auto">
-        {/* Top Right Controls */}
         <div className="flex justify-end items-center gap-4 mb-6">
           <DarkModeToggle />
           <button
@@ -53,13 +52,10 @@ const Home = () => {
             Logout
           </button>
         </div>
-
-        {/* Title */}
         <h1 className="text-4xl font-bold text-center text-green-600 mb-10">
           Spotify Music Search
         </h1>
 
-        {/* Search Controls */}
         <div className="flex flex-col sm:flex-row gap-4 mb-6">
           <input
             type="text"
@@ -85,8 +81,6 @@ const Home = () => {
             Search
           </button>
         </div>
-
-        {/* Results */}
         {loading ? (
           <div className="text-center text-gray-500 text-xl">Loading...</div>
         ) : results.length === 0 ? (
