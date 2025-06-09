@@ -20,7 +20,7 @@ const Home = ({ token }) => {
 
     setLoading(true);
     try {
-      const response = await fetch(`http://localhost:3001/search?q=${encodeURIComponent(searchTerm)}&type=${searchType}`, {
+      const response = await fetch(`${import.meta.env.VITE_API_URI}?q=${encodeURIComponent(searchTerm)}&type=${searchType}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       const data = await searchSpotify(searchTerm, searchType, token);
