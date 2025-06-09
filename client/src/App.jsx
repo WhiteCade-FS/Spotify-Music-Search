@@ -16,7 +16,7 @@ const App = () => {
     if (urlToken) {
       localStorage.setItem('jwt', urlToken);
       setToken(urlToken);
-      window.history.replaceState({}, '', '/');
+      window.history.replaceState(null, '', '/');
     } else if (storedToken) {
       setToken(storedToken);
     }
@@ -28,14 +28,8 @@ const App = () => {
 
   return (
     <Routes>
-      <Route
-        path="/"
-        element={token ? <Home token={token} /> : <Navigate to="/login" replace />}
-      />
-      <Route
-        path="/login"
-        element={!token ? <Login /> : <Navigate to="/" replace />}
-      />
+      <Route path="/" element={token ? <Home token={token} /> : <Navigate to="/login" replace />} />
+      <Route path="/login" element={!token ? <Login /> : <Navigate to="/" replace />} />
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   );
