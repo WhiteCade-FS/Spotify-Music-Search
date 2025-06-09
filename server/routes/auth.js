@@ -55,6 +55,7 @@ router.get('/callback', async (req, res) => {
     res.redirect(`https://spotify-music-search-six.vercel.app/?token=${token}`);
 
   } catch (err) {
+    console.error("Spotify token exchange failed:");
     console.error(err.response?.data || err.message);
     res.status(400).json({ error: 'Spotify auth failed' });
   }
