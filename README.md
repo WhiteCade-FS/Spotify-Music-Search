@@ -19,6 +19,6 @@
 
 
 ## Links
-- Local Backend: <a>http://localhost:3001</a>
-- Local Frontend: <a>http://localhost:3000</a>
+- Local Backend: <a>http://127.0.0.1:3001/auth/login</a>
+- Local Frontend: <a>http://127.0.0.1:5173/</a>
 - Spotify API Docs: <a>https://developer.spotify.com/documentation/web-api</a>
