@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import DarkModeToggle from '../components/DarkModeToggle.jsx';
 import { searchSpotify } from '../../services/api.js';
+import { useNavigate } from 'react-router-dom';
+
 
 const Home = ({ token }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [searchType, setSearchType] = useState('track');
   const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const handleSearch = async () => {
     if (!searchTerm.trim() || !token) return;
@@ -30,7 +33,7 @@ const Home = ({ token }) => {
 
   const handleLogout = () => {
     localStorage.removeItem('jwt');
-    window.location.href = '/login';
+    navigate('/login');
   };
 
   return (
