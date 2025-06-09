@@ -52,7 +52,7 @@ router.get('/callback', async (req, res) => {
       { expiresIn: '1h' }
     );
 
-    res.redirect(`http://127.0.0.1:5173/?token=${token}`);
+    res.redirect(`https://spotify-music-search-six.vercel.app/?token=${token}`);
 
   } catch (err) {
     console.error(err.response?.data || err.message);
