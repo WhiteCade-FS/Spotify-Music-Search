@@ -13,15 +13,16 @@ const Card = ({ item, searchType }) => {
     const centerX = rect.width / 2;
     const centerY = rect.height / 2;
 
-    const rotateX = ((y - centerY) / centerY) * 10;
-    const rotateY = ((x - centerX) / centerX) * -10;
 
-    card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+    const rotateX = ((y - centerY) / centerY) * 20;
+    const rotateY = ((x - centerX) / centerX) * -20;
+
+    card.style.transform = `perspective(600px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
   };
 
   const handleMouseLeave = () => {
     const card = cardRef.current;
-    card.style.transform = 'rotateX(0deg) rotateY(0deg)';
+    card.style.transform = 'perspective(600px) rotateX(0deg) rotateY(0deg) scale(1)';
   };
 
   const imageUrl = item.images?.[0]?.url || item.album?.images?.[0]?.url;
@@ -35,8 +36,11 @@ const Card = ({ item, searchType }) => {
       ref={cardRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className="bg-white dark:bg-gray-800 p-4 rounded shadow hover:shadow-lg transition-transform duration-200 cursor-pointer"
-      style={{ transformStyle: 'preserve-3d', willChange: 'transform' }}
+      className="bg-white dark:bg-gray-800 p-4 rounded shadow hover:shadow-2xl transition-transform duration-75 ease-out cursor-pointer"
+      style={{
+        transformStyle: 'preserve-3d',
+        willChange: 'transform',
+      }}
     >
       {imageUrl ? (
         <img
@@ -60,3 +64,4 @@ const Card = ({ item, searchType }) => {
 };
 
 export default Card;
+
