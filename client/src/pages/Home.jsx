@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import DarkModeToggle from '../components/DarkModeToggle.jsx';
+import Card from '../components/Card.jsx';
 import { searchSpotify } from '../../services/api.js';
 
 const Home = ({ token }) => {
@@ -22,9 +23,6 @@ const Home = ({ token }) => {
 
     setLoading(true);
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_URI}?q=${encodeURIComponent(searchTerm)}&type=${searchType}`, {
-        headers: { Authorization: `Bearer ${token}` }
-      });
       const data = await searchSpotify(searchTerm, searchType, token);
       setResults(data[`${searchType}s`]?.items || []);
     } catch (err) {
@@ -90,31 +88,7 @@ const Home = ({ token }) => {
         ) : (
           <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
             {results.map((item) => (
-              <a
-                key={item.id}
-                href={item.external_urls.spotify}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-white dark:bg-gray-800 p-4 rounded shadow hover:shadow-md transition"
-              >
-                {(item.images?.[0]?.url || item.album?.images?.[0]?.url) ? (
-                  <img
-                    src={item.images?.[0]?.url || item.album?.images?.[0]?.url}
-                    alt={item.name}
-                    className="w-full h-48 object-cover rounded mb-2"
-                  />
-                ) : (
-                  <div className="w-full h-48 bg-gray-200 dark:bg-gray-700 flex items-center justify-center text-gray-500">
-                    No Image
-                  </div>
-                )}
-                <h3 className="text-lg font-semibold">{item.name}</h3>
-                <p className="text-sm text-gray-500 dark:text-gray-400">
-                  {searchType === 'track' || searchType === 'album'
-                    ? item.artists?.map((a) => a.name).join(', ')
-                    : item.genres?.join(', ')}
-                </p>
-              </a>
+              <Card key={item.id} item={item} searchType={searchType} />
             ))}
           </div>
         )}
