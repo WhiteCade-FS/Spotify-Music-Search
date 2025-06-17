@@ -13,16 +13,15 @@ const Card = ({ item, searchType }) => {
     const centerX = rect.width / 2;
     const centerY = rect.height / 2;
 
+    const rotateX = ((y - centerY) / centerY) * 8;
+    const rotateY = ((x - centerX) / centerX) * -8;
 
-    const rotateX = ((y - centerY) / centerY) * 20;
-    const rotateY = ((x - centerX) / centerX) * -20;
-
-    card.style.transform = `perspective(600px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
+    card.style.transform = `perspective(700px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.025)`;
   };
 
   const handleMouseLeave = () => {
     const card = cardRef.current;
-    card.style.transform = 'perspective(600px) rotateX(0deg) rotateY(0deg) scale(1)';
+    card.style.transform = 'perspective(700px) rotateX(0deg) rotateY(0deg) scale(1)';
   };
 
   const imageUrl = item.images?.[0]?.url || item.album?.images?.[0]?.url;
@@ -36,7 +35,7 @@ const Card = ({ item, searchType }) => {
       ref={cardRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className="bg-white dark:bg-gray-800 p-4 rounded shadow hover:shadow-2xl transition-transform duration-75 ease-out cursor-pointer"
+      className="bg-white dark:bg-gray-800 p-4 rounded shadow hover:shadow-xl transition-transform duration-100 ease-out cursor-pointer"
       style={{
         transformStyle: 'preserve-3d',
         willChange: 'transform',
