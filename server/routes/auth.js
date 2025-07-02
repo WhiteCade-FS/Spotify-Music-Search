@@ -53,7 +53,7 @@ router.get('/callback', async (req, res) => {
 
     const token = jwt.sign({ access_token, refresh_token }, jwt_secret, { expiresIn: '1h' });
 
-    console.log('Redirecting to:', base_url);
+
     res.redirect(`${base_url}/?token=${token}`);
   } catch (err) {
     console.error(err.response?.data || err.message);
