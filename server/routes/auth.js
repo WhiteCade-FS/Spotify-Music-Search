@@ -7,8 +7,12 @@ const router = express.Router();
 
 const client_id = process.env.SPOTIFY_CLIENT_ID;
 const client_secret = process.env.SPOTIFY_CLIENT_SECRET;
-const redirect_uri = process.env.SPOTIFY_REDIRECT_URI;
 const jwt_secret = process.env.JWT_SECRET;
+
+const isProd = process.env.NODE_ENV === 'production';
+const base_url = isProd ? process.env.PROD_BASE_URL : process.env.DEV_BASE_URL;
+const redirect_uri = isProd ? process.env.PROD_REDIRECT_URI : process.env.DEV_REDIRECT_URI;
+
 
 router.get('/login', (req, res) => {
   const scope = 'user-read-private user-read-email';
@@ -50,7 +54,7 @@ router.get('/callback', async (req, res) => {
     const token = jwt.sign({ access_token, refresh_token }, jwt_secret, { expiresIn: '1h' });
 
 
-    res.redirect(`https://spotify-music-search-six.vercel.app/?token=${token}`);
+    res.redirect(`${base_url}/?token=${token}`);
   } catch (err) {
     console.error(err.response?.data || err.message);
     res.status(400).json({ error: 'Spotify auth failed' });
