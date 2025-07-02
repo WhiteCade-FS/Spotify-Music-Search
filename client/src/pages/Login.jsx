@@ -1,4 +1,5 @@
 import React from 'react';
+import {API_BASE_URL} from '../../services/api.js';
 
 const Login = () => {
   return (
@@ -8,7 +9,7 @@ const Login = () => {
         <p className="mb-6 text-gray-300">Search for tracks, albums, and artists — instantly.</p>
 
         <a
-          href="https://spotify-music-search-d229755e687e.herokuapp.com/auth/login"
+          href={`${API_BASE_URL}/auth/login`}
           className="inline-block bg-green-500 hover:bg-green-400 text-black font-semibold text-lg px-6 py-3 rounded-lg transition-all transform hover:scale-105"
         >
           Login with Spotify

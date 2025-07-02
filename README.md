@@ -17,9 +17,9 @@
 
 ## Getting Started
 - cd into the spotify-search-app
-- cd into /server
-- Use "node server.js" to start the Backend
-- In another window, cd into /client
+- To get the back end up and running:
+- Use "node server.js" from the root to get the server started. NOTE* (if using Windows, Use powershell for this step as WSL doesn't allow for 127.0.0.1 to be used).
+- In another window, cd into /client (this step can be done in WSL as Windows powershell doesnt allow for UNC commands if running through Ubuntu or similar).
 - use "npm run dev" to start the Frontend
 
 ### Easiest way to use the Site
